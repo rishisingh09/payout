@@ -4,6 +4,8 @@ import Header from './components/Header'
 import SearchBar from './components/SearchBar'
 import CommonButton from './components/CommonButton'
 import SummaryCard from './components/SummaryCard'
+import TransactionsLog from './components/TransactionsLog'
+import Pagination from './components/Pagination'
 
 const record = [
   { orderId: "#100001", orderDate: "2024-01-08", orderAmount: 150.00, transactionFees: 5.00 },
@@ -55,7 +57,7 @@ export default function Home() {
             <SummaryCard description={"Amount Received"} value={"₹23,92,312.19"} />
           </div>
           <div className='mt-32px bg-white'>
-            <div className='text-black12 text-20 font-medium'>Transactions | This Month</div>
+            <div className='text-black12 text-20 font-medium pl-16px pt-16px'>Transactions | This Month</div>
             <div className=' p-15px flex justify-between mt-20px'>
               <SearchBar
                 placeholder={'Search by order ID...'}
@@ -68,31 +70,8 @@ export default function Home() {
                 <CommonButton image={'/Download.svg'} width={36} paddingX='0' extraClasses={'flex-center pl-8px'} />
               </div>
             </div>
-            <div className='text-black12 overflow-y-scroll px-15px'>
-              <table className='w-full'>
-                <thead className=''>
-                  <tr className='bg-black95 py-10px'>
-                    {transactionHeadings.map((item, i) => {
-                      return (
-                        <th className={`py-10px text-14 font-medium`} style={{ width: "25%" }} key={item}>{item}</th>
-                      )
-                    })}
-                  </tr>
-                </thead>
-                <tbody>
-                  {record.map((val, key) => {
-                    return (
-                      <tr className='border-b border-black85' key={key}>
-                        <td className='text-blue text-center py-14px text-14 font-medium'>{val.orderId}</td>
-                        <td className='text-center py-14px text-14'>{val.orderDate}</td>
-                        <td className='text-center py-14px text-14'>{val.orderAmount}</td>
-                        <td className='text-center py-14px text-14'>{val.transactionFees}</td>
-                      </tr>
-                    )
-                  })}
-                </tbody>
-              </table>
-            </div>
+            <TransactionsLog transactionHeadings={transactionHeadings} record={record} />
+            <Pagination />
           </div>
         </div>
       </div>
