@@ -1,113 +1,101 @@
 import Image from 'next/image'
+import Navigation from './components/Navigation'
+import Header from './components/Header'
+import SearchBar from './components/SearchBar'
+import CommonButton from './components/CommonButton'
+import SummaryCard from './components/SummaryCard'
+
+const record = [
+  { orderId: "#100001", orderDate: "2024-01-08", orderAmount: 150.00, transactionFees: 5.00 },
+  { orderId: "#100002", orderDate: "2024-01-09", orderAmount: 200.50, transactionFees: 7.50 },
+  { orderId: "#100003", orderDate: "2024-01-10", orderAmount: 120.75, transactionFees: 4.25 },
+  { orderId: "#100004", orderDate: "2024-01-11", orderAmount: 175.20, transactionFees: 6.20 },
+  { orderId: "#100005", orderDate: "2024-01-12", orderAmount: 130.50, transactionFees: 4.75 },
+  { orderId: "#100006", orderDate: "2024-01-13", orderAmount: 180.75, transactionFees: 6.50 },
+  { orderId: "#100007", orderDate: "2024-01-14", orderAmount: 210.00, transactionFees: 8.00 },
+  { orderId: "#100008", orderDate: "2024-01-15", orderAmount: 160.25, transactionFees: 5.75 },
+  { orderId: "#100009", orderDate: "2024-01-16", orderAmount: 190.50, transactionFees: 7.25 },
+  { orderId: "#100010", orderDate: "2024-01-17", orderAmount: 140.75, transactionFees: 5.50 },
+  { orderId: "#100011", orderDate: "2024-01-18", orderAmount: 220.00, transactionFees: 8.50 },
+  { orderId: "#100012", orderDate: "2024-01-19", orderAmount: 200.25, transactionFees: 7.00 },
+  { orderId: "#100013", orderDate: "2024-01-20", orderAmount: 170.50, transactionFees: 6.25 },
+  { orderId: "#100014", orderDate: "2024-01-21", orderAmount: 150.75, transactionFees: 5.50 },
+  { orderId: "#100015", orderDate: "2024-01-22", orderAmount: 130.00, transactionFees: 4.50 },
+  { orderId: "#100016", orderDate: "2024-01-23", orderAmount: 180.25, transactionFees: 6.75 },
+  { orderId: "#100017", orderDate: "2024-01-24", orderAmount: 160.50, transactionFees: 6.00 },
+  { orderId: "#100018", orderDate: "2024-01-25", orderAmount: 120.75, transactionFees: 4.25 },
+  { orderId: "#100019", orderDate: "2024-01-26", orderAmount: 140.00, transactionFees: 5.00 },
+]
+
+const menu = [
+  "Home", "Orders", "Products", "Delivery", "Marketing", "Analytics", "Payments", "Tools", "Discounts", "Audience", "Appearance", "Plugins"
+]
+
+const transactionHeadings = ["Order ID", "Order date", "Order amount", "Transaction fees"]
 
 export default function Home() {
   return (
-    <main className="flex min-h-screen flex-col items-center justify-between p-24">
-      <div className="z-10 max-w-5xl w-full items-center justify-between font-mono text-sm lg:flex">
-        <p className="fixed left-0 top-0 flex w-full justify-center border-b border-gray-300 bg-gradient-to-b from-zinc-200 pb-6 pt-8 backdrop-blur-2xl dark:border-neutral-800 dark:bg-zinc-800/30 dark:from-inherit lg:static lg:w-auto  lg:rounded-xl lg:border lg:bg-gray-200 lg:p-4 lg:dark:bg-zinc-800/30">
-          Get started by editing&nbsp;
-          <code className="font-mono font-bold">src/app/page.js</code>
-        </p>
-        <div className="fixed bottom-0 left-0 flex h-48 w-full items-end justify-center bg-gradient-to-t from-white via-white dark:from-black dark:via-black lg:static lg:h-auto lg:w-auto lg:bg-none">
-          <a
-            className="pointer-events-none flex place-items-center gap-2 p-8 lg:pointer-events-auto lg:p-0"
-            href="https://vercel.com?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            By{' '}
-            <Image
-              src="/vercel.svg"
-              alt="Vercel Logo"
-              className="dark:invert"
-              width={100}
-              height={24}
-              priority
+    <div className='h-full flex bg-offwhite' style={{}}>
+      <Navigation menu={menu} />
+      <div className='h-full '
+        style={{ width: 1220 }}
+      >
+        <Header />
+        <div className='p-32px h-full flex-col'>
+          <div className='flex justify-between'>
+            <div className='text-black12 text-20 font-medium'>Overview</div>
+            <CommonButton
+              text={'Last Month'}
+              image={'/ArrowDownBlack.svg'}
+              extraClasses={"px-14px"}
             />
-          </a>
+          </div>
+          <div className='flex justify-between mt-24px'>
+            <SummaryCard description={"Online orders"} value={231} />
+            <SummaryCard description={"Amount Received"} value={"₹23,92,312.19"} />
+          </div>
+          <div className='mt-32px bg-white'>
+            <div className='text-black12 text-20 font-medium'>Transactions | This Month</div>
+            <div className=' p-15px flex justify-between mt-20px'>
+              <SearchBar
+                placeholder={'Search by order ID...'}
+                extraClasses={'border border-black85 bg-white'}
+                backgroundColor='white'
+                width={328}
+              />
+              <div className='flex'>
+                <CommonButton text={'Sort'} image={'/Sorting.svg'} width={79} extraClasses={"mr-12px px-14px"} />
+                <CommonButton image={'/Download.svg'} width={36} paddingX='0' extraClasses={'flex-center pl-8px'} />
+              </div>
+            </div>
+            <div className='text-black12 overflow-y-scroll px-15px'>
+              <table className='w-full'>
+                <thead className=''>
+                  <tr className='bg-black95 py-10px'>
+                    {transactionHeadings.map((item, i) => {
+                      return (
+                        <th className={`py-10px text-14 font-medium`} style={{ width: "25%" }} key={item}>{item}</th>
+                      )
+                    })}
+                  </tr>
+                </thead>
+                <tbody>
+                  {record.map((val, key) => {
+                    return (
+                      <tr className='border-b border-black85' key={key}>
+                        <td className='text-blue text-center py-14px text-14 font-medium'>{val.orderId}</td>
+                        <td className='text-center py-14px text-14'>{val.orderDate}</td>
+                        <td className='text-center py-14px text-14'>{val.orderAmount}</td>
+                        <td className='text-center py-14px text-14'>{val.transactionFees}</td>
+                      </tr>
+                    )
+                  })}
+                </tbody>
+              </table>
+            </div>
+          </div>
         </div>
       </div>
-
-      <div className="relative flex place-items-center before:absolute before:h-[300px] before:w-[480px] before:-translate-x-1/2 before:rounded-full before:bg-gradient-radial before:from-white before:to-transparent before:blur-2xl before:content-[''] after:absolute after:-z-20 after:h-[180px] after:w-[240px] after:translate-x-1/3 after:bg-gradient-conic after:from-sky-200 after:via-blue-200 after:blur-2xl after:content-[''] before:dark:bg-gradient-to-br before:dark:from-transparent before:dark:to-blue-700 before:dark:opacity-10 after:dark:from-sky-900 after:dark:via-[#0141ff] after:dark:opacity-40 before:lg:h-[360px] z-[-1]">
-        <Image
-          className="relative dark:drop-shadow-[0_0_0.3rem_#ffffff70] dark:invert"
-          src="/next.svg"
-          alt="Next.js Logo"
-          width={180}
-          height={37}
-          priority
-        />
-      </div>
-
-      <div className="mb-32 grid text-center lg:max-w-5xl lg:w-full lg:mb-0 lg:grid-cols-4 lg:text-left">
-        <a
-          href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          className="group rounded-lg border border-transparent px-5 py-4 transition-colors hover:border-gray-300 hover:bg-gray-100 hover:dark:border-neutral-700 hover:dark:bg-neutral-800/30"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2 className={`mb-3 text-2xl font-semibold`}>
-            Docs{' '}
-            <span className="inline-block transition-transform group-hover:translate-x-1 motion-reduce:transform-none">
-              -&gt;
-            </span>
-          </h2>
-          <p className={`m-0 max-w-[30ch] text-sm opacity-50`}>
-            Find in-depth information about Next.js features and API.
-          </p>
-        </a>
-
-        <a
-          href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          className="group rounded-lg border border-transparent px-5 py-4 transition-colors hover:border-gray-300 hover:bg-gray-100 hover:dark:border-neutral-700 hover:dark:bg-neutral-800 hover:dark:bg-opacity-30"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2 className={`mb-3 text-2xl font-semibold`}>
-            Learn{' '}
-            <span className="inline-block transition-transform group-hover:translate-x-1 motion-reduce:transform-none">
-              -&gt;
-            </span>
-          </h2>
-          <p className={`m-0 max-w-[30ch] text-sm opacity-50`}>
-            Learn about Next.js in an interactive course with&nbsp;quizzes!
-          </p>
-        </a>
-
-        <a
-          href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          className="group rounded-lg border border-transparent px-5 py-4 transition-colors hover:border-gray-300 hover:bg-gray-100 hover:dark:border-neutral-700 hover:dark:bg-neutral-800/30"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2 className={`mb-3 text-2xl font-semibold`}>
-            Templates{' '}
-            <span className="inline-block transition-transform group-hover:translate-x-1 motion-reduce:transform-none">
-              -&gt;
-            </span>
-          </h2>
-          <p className={`m-0 max-w-[30ch] text-sm opacity-50`}>
-            Explore starter templates for Next.js.
-          </p>
-        </a>
-
-        <a
-          href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          className="group rounded-lg border border-transparent px-5 py-4 transition-colors hover:border-gray-300 hover:bg-gray-100 hover:dark:border-neutral-700 hover:dark:bg-neutral-800/30"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2 className={`mb-3 text-2xl font-semibold`}>
-            Deploy{' '}
-            <span className="inline-block transition-transform group-hover:translate-x-1 motion-reduce:transform-none">
-              -&gt;
-            </span>
-          </h2>
-          <p className={`m-0 max-w-[30ch] text-sm opacity-50`}>
-            Instantly deploy your Next.js site to a shareable URL with Vercel.
-          </p>
-        </a>
-      </div>
-    </main>
+    </div>
   )
 }
