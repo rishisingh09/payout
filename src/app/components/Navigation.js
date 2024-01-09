@@ -1,15 +1,16 @@
 import Image from 'next/image'
 import React from 'react'
 import ProfilePicture from './ProfilePicture'
+import { menu } from '@/constants'
 
-const Navigation = ({ menu }) => {
+const Navigation = () => {
     return (
         <div className='bg-black p-16px' style={{ width: 220 }}>
             <div className='flex-col' style={{ height: "95%" }}>
                 <div className='flex items-center justify-between '>
                     <ProfilePicture />
                     <div className='cursor-pointer'>
-                        <img src='/Chevron Down.svg' />
+                        <img alt='' src='/Chevron Down.svg' />
                     </div>
                 </div>
                 <div className='mt-24px'>

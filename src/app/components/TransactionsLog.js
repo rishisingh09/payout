@@ -1,6 +1,7 @@
 import React from 'react'
+import { transactionHeadings, record } from '@/constants'
 
-const TransactionsLog = ({ transactionHeadings, record }) => {
+const TransactionsLog = () => {
     return (
         <div className='text-black12 overflow-y-scroll px-15px'>
             <table className='w-full'>
@@ -8,7 +9,7 @@ const TransactionsLog = ({ transactionHeadings, record }) => {
                     <tr className='bg-black95 py-10px'>
                         {transactionHeadings.map((item, i) => {
                             return (
-                                <th className={`py-10px text-14 font-medium relative`} style={{ width: "25%" }} key={item}>{item}{item === "Order date" ? <img className='absolute' style={{right:90, top:17}}src='/SmallDropDown.svg' /> : item === "Transaction fees" ? <img className='absolute' style={{right:65, top:13}} src='/SmallInfo.svg' /> : null}</th>
+                                <th className={`py-10px text-14 font-medium relative`} style={{ width: "25%" }} key={item}>{item}{item === "Order date" ? <img className='absolute' style={{ right: 90, top: 17 }} src='/SmallDropDown.svg' /> : item === "Transaction fees" ? <img className='absolute' style={{ right: 65, top: 13 }} src='/SmallInfo.svg' /> : null}</th>
                             )
                         })}
                     </tr>
