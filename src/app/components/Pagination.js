@@ -5,9 +5,9 @@ const pages = ["1", "...", "11", "12", "13", "14", "15", "16", "17", "18"]
 
 const Pagination = () => {
     return (
-        <div className='w-full flex justify-center'>
+        <div className='w-full flex justify-center pt-24px'>
             <div className='flex' style={{ width: "50%" }}>
-                <CommonButton extraClasses={"px-14px"} text={"Previous"} />
+                <CommonButton height={32} width={100} imageBefore={true} extraClasses={"px-12px"} text={"Previous"} image={"./ArrowLeft.svg"}/>
                 <div className='flex items-center'>
                     {pages.map((page) => {
                         return (
@@ -16,7 +16,7 @@ const Pagination = () => {
                     })}
                 </div>
 
-                <CommonButton extraClasses={"px-14px"} text={"Next"} />
+                <CommonButton height={32} width={74} extraClasses={"px-12px"} text={"Next"} image={"./ArrowRight.svg"} />
             </div>
         </div>
     )

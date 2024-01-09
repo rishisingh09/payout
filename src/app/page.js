@@ -43,7 +43,7 @@ export default function Home() {
         style={{ width: 1220 }}
       >
         <Header />
-        <div className='p-32px h-full flex-col'>
+        <div className='p-32px flex-col'>
           <div className='flex justify-between'>
             <div className='text-black12 text-20 font-medium'>Overview</div>
             <CommonButton

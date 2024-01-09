@@ -2,7 +2,7 @@ import React from 'react'
 
 const TransactionsLog = ({ transactionHeadings, record }) => {
     return (
-        <div className='text-black12 overflow-y-scroll px-15px' style={{ height: 430 }}>
+        <div className='text-black12 overflow-y-scroll px-15px'>
             <table className='w-full'>
                 <thead className=''>
                     <tr className='bg-black95 py-10px'>
