@@ -2,14 +2,6 @@
 
 > A desktop app to view & analyse Transactions. Built using Next.JS
 
-### ✨ Demo
-
-- [Watch](https://www.youtube.com/watch?v=XtM-sRLxLLc&ab_channel=theapache64) demo
-
-### 📽️ Usage
-
-- [Show](docs/USAGE.md) usage
-
 ## 💻 Install
 
 First, install the dependencies:
